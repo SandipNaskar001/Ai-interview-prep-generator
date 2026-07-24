@@ -1,0 +1,152 @@
+@use "sass:color";
+
+// ---- design tokens ----
+$blue-primary: #3b82f6;
+$blue-dark: #2563eb;
+$blue-darker: #1d4ed8;
+$blue-light: #60a5fa;
+$bg-navbar: rgba(15, 23, 42, 0.96);
+$text-muted: #a7b4c9; // bumped from #94a3b8 for better contrast on dark bg
+$focus-ring: 0 0 0 2px rgba($blue-primary, 0.6);
+
+.navbar {
+  width: 100%;
+  min-height: 72px;
+  padding: 0 clamp(1rem, 3vw, 2rem);
+  background: $bg-navbar;
+  border-bottom: 1px solid rgba($blue-primary, 0.2);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap; // lets content reflow instead of forcing a column stack
+
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  &__logo {
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 2px 4px;
+    border-radius: 6px;
+
+    &:focus-visible {
+      outline: none;
+      box-shadow: $focus-ring;
+    }
+
+    h2 {
+      margin: 0;
+      color: $blue-primary;
+      font-size: clamp(1.15rem, 2vw, 1.5rem); // fluid instead of 3 fixed jumps
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: clamp(0.75rem, 2vw, 1.5rem);
+  }
+
+  &__user {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    min-width: 0; // required for text-overflow ellipsis to work in a flex child
+
+    .avatar {
+      width: clamp(34px, 5vw, 44px);
+      height: clamp(34px, 5vw, 44px);
+      flex-shrink: 0; // avatar can no longer get squished by name truncation
+      border-radius: 50%;
+      background: linear-gradient(135deg, $blue-dark, $blue-light);
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      font-size: 1rem;
+      font-weight: 700;
+      color: white;
+      border: none;
+      cursor: pointer;
+
+      &:focus-visible {
+        outline: none;
+        box-shadow: $focus-ring;
+      }
+    }
+
+    .user-info {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+
+      h4 {
+        margin: 0;
+        color: white;
+        font-size: 0.9rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      p {
+        margin: 0;
+        color: $text-muted;
+        font-size: 0.78rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+}
+
+.logout-btn {
+  padding: 9px 16px;
+  border: none;
+  border-radius: 8px;
+
+  background: linear-gradient(90deg, $blue-dark, $blue-primary);
+
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: background 0.25s ease, box-shadow 0.25s ease, transform 0.1s ease;
+  white-space: nowrap;
+
+  &:hover {
+    background: linear-gradient(90deg, $blue-darker, $blue-dark);
+    box-shadow: 0 0 12px rgba($blue-primary, 0.4);
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: $focus-ring;
+  }
+}
+
+// Below ~420px, name/email truncation + wrapping is no longer enough —
+// this is the one true structural breakpoint, not an arbitrary tablet cutoff.
+@media (max-width: 420px) {
+  .navbar {
+    &__user .user-info p {
+      display: none; // email is the least essential info at this width
+    }
+  }
+}

@@ -1,0 +1,111 @@
+main {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #050816, #0b1120, #111827);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.form-container {
+  width: 100%;
+  max-width: 420px;
+  padding: 2.5rem;
+  border-radius: 16px;
+  background: rgba(17, 24, 39, 0.95);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+
+  h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #ffffff;
+    font-size: 2rem;
+    letter-spacing: 1px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.3rem;
+  }
+  p {
+    margin-top: 1.5rem;
+    text-align: center;
+    color: #cbd5e1;
+    font-size: 0.95rem;
+
+    a {
+      color: #3b82f6;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: #60a5fa;
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.input-grp {
+  display: flex;
+  flex-direction: column;
+
+  label {
+    color: #cbd5e1;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+  }
+
+  input {
+    width: 100%;
+    padding: 14px 16px;
+    background: #0f172a;
+    color: #ffffff;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+
+    &::placeholder {
+      color: #94a3b8;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 12px rgba(59, 130, 246, 0.5);
+    }
+  }
+
+}
+
+.button {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.primary-button {
+  background: linear-gradient(90deg, #2563eb, #3b82f6);
+  color: white;
+
+  &:hover {
+    background: linear-gradient(90deg, #1d4ed8, #2563eb);
+    box-shadow: 0 0 15px rgba(59, 130, 246, 0.6);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+  
+}

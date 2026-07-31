@@ -42,8 +42,8 @@ async function registerUser(req, res) {
 
     res.cookie("token", token, {
       httpOnly: true,
-      secure: false, // true only in production with HTTPS
-      sameSite: "lax",
+      secure: true, // true only in production with HTTPS
+      sameSite: "none",
       maxAge: 24 * 60 * 60 * 1000,
     });
 
@@ -101,8 +101,8 @@ async function loginUser(req, res) {
 
     res.cookie("token", token, {
   httpOnly: true,
-  secure: false,
-  sameSite: "lax",
+  secure: true,
+  sameSite: "none",
   path: "/",
   maxAge: 24 * 60 * 60 * 1000,
 });

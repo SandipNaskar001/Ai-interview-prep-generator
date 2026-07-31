@@ -8,7 +8,8 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://ai-interview-prep-generator.vercel.app/login",
+    //or "http://localhost:5173",
     credentials: true,
   })
 );

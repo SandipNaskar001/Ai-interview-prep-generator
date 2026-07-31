@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API = "http://localhost:3001/api/auth"; 
+const API = "https://ai-interview-prep-generator-backend.onrender.com/api/auth"; 
 
 export async function register({ username, email, password }) {
   try {
